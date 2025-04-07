@@ -1,0 +1,39 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+body {
+  background-color: rgb(211, 247, 229);
+}
+
+form {
+  background-color: white;
+  color: black;
+  padding: 2rem;
+  border-radius: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="radio"],
+textarea {
+  background-color: aliceblue;
+  margin: 1rem;
+  max-width: 100%;
+}
+
+input[type="submit"] {
+  color: white;
+  background-color: green;
+}
