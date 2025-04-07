@@ -31,6 +31,7 @@ textarea {
   background-color: aliceblue;
   margin: 1rem;
   max-width: 100%;
+  color: black;
 }
 
 input[type="submit"] {
