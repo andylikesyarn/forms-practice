@@ -11,9 +11,19 @@ function App() {
     setSubmitted(true); //changes value of setSubmitted on click.
   };
 
+  //https://www.w3schools.com/jsref/event_onsubmit.asp
+  //https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor
+
   return (
     <>
-      {!submitted ? (
+      {submitted ? (
+        <p className="result"> Yay! Tu l'as fait!</p>
+      ) : (
+        //ok logically I knew this would work but it's kind of magical that it actually DID work
+        /* based on this : https://stackoverflow.com/questions/43566107/javascript-if-else-on-submit 
+      and this: https://www.youtube.com/watch?v=xRKvjWDZlW8
+      
+      but i wanted to see if i could do it w/ a ternery operator*/
         <form onSubmit={handleSubmit}>
           <br></br>
           <label htmlFor="name">Prénom</label>
@@ -47,8 +57,6 @@ function App() {
           <br></br>
           <input type="submit"></input>
         </form>
-      ) : (
-        <p> Yay! Tu l'as fait!</p>
       )}
     </>
   );

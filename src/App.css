@@ -38,3 +38,7 @@ input[type="submit"] {
   color: white;
   background-color: green;
 }
+
+.result {
+  color: black;
+}
