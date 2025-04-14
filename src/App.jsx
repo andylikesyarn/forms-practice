@@ -6,9 +6,39 @@ import "./App.css";
 function App() {
   const [submitted, setSubmitted] = useState(false); //this sets the initial value to false, so we don't render the wrong component.
 
+  const [formData, setFormData] = useState({
+    name: "",
+    apellido: "",
+    email: "",
+    message: "",
+    type: "",
+    consent: "",
+  });
+
+  function handleChange(e) {
+    const { name, value, type, checked } = e.target;
+    console.log(name, value);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+    //prevFromData allows us to make a copy of formData, and then add new stuff
+    // setFormData(newData) <- old way
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmitted(true); //changes value of setSubmitted on click.
+    /* setFormData({
+      name: "",
+      appellido: "",
+      email: "",
+      message: "",
+      request: "",
+      consent: "",
+    });*/
+    console.log(formData);
   };
 
   //https://www.w3schools.com/jsref/event_onsubmit.asp
@@ -27,22 +57,59 @@ function App() {
         <form onSubmit={handleSubmit}>
           <br></br>
           <label htmlFor="name">Prénom</label>
-          <input required type="text" id="name" name="name"></input>
+
+          <input
+            required
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          ></input>
+
           <label htmlFor="apellido">Nom de Famille</label>
-          <input required type="text" id="apellido" name="apellido"></input>
+          <input
+            required
+            type="text"
+            id="apellido"
+            name="apellido"
+            value={formData.apellido}
+            onChange={handleChange}
+          ></input>
           <br></br>
           <label htmlFor="email">Corriel</label>
-          <input required type="email" id="email" name="email"></input>
+          <input
+            required
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          ></input>
           <br></br>
           <p>De quoi avez-vous besoin d'aide?</p>
           <label>
             <label>
-              <input type="radio" name="type" value="general" /> Questiones
-              Générales
+              <input
+                type="radio"
+                name="type"
+                id="general"
+                value="general"
+                onChange={handleChange}
+                checked={formData.type === "general"}
+              />{" "}
+              Questiones Générales
             </label>
             <label>
-              <input type="radio" name="type" value="request" /> Demander de
-              L'aide
+              <input
+                type="radio"
+                name="type"
+                id="request"
+                value="request"
+                onChange={handleChange}
+                checked={formData.type === "request"}
+              />{" "}
+              Demander de L'aide
             </label>
           </label>
           <br></br>
@@ -50,10 +117,24 @@ function App() {
             Écrivez votre message ici:
           </label>
           <br></br>
-          <textarea id="message" name="message" rows="4" cols="50"></textarea>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            rows="4"
+            cols="50"
+          ></textarea>
           <br></br>
           <label htmlFor="consent">case à cocher de consentement:</label>
-          <input required type="checkbox" id="consent" name="consent"></input>
+          <input
+            required
+            type="checkbox"
+            id="consent"
+            name="consent"
+            value={formData.consent}
+            onChange={handleChange}
+          ></input>
           <br></br>
           <input type="submit"></input>
         </form>
